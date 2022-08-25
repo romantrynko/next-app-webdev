@@ -2,9 +2,10 @@ import Link from 'next/link';
 import styles from '../styles/Navbar.module.scss';
 import { navigation } from './constants/nav';
 import { useRouter } from 'next/router';
+import { FC } from 'react';
 import Image from 'next/image';
 
-const Navbar = () => {
+const Navbar: FC = () => {
   const { pathname } = useRouter();
   return (
     <nav className={styles.nav}>
