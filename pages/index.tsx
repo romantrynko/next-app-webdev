@@ -28,12 +28,10 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
       props: { socials: data }
     };
-
   } catch (error) {
     return {
       props: { socials: null }
     };
-
   }
 };
 
