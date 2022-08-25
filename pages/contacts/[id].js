@@ -1,0 +1,27 @@
+import Head from 'next/head';
+import ContactInfo from '../../components/ContactInfo';
+
+const Contact = ({ data }) => (
+  <>
+    <Head><title>{data.name}</title></Head>
+    <ContactInfo contact={data} />
+  </>
+);
+
+export const getServerSideProps = async (context) => {
+  const { id } = context.params;
+  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+  const data = await response.json();
+
+  if (!data) {
+    return {
+      notFound: true
+    };
+  }
+
+  return {
+    props: { data }
+  };
+};
+
+export default Contact;

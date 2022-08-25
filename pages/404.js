@@ -1,10 +1,28 @@
-import Heading from "../components/Heading";
+import Heading from '../components/Heading';
+import Head from "next/head";
+import styles from '../styles/404.module.scss';
 
-const Error = () => (
-  <>
-    <Heading text="Error" />
-    <Heading tag="h2" text="Something wrong" />
-  </>
-);
+import { useEffect } from 'react';
+import { useRouter } from 'next/dist/client/router';
+
+const Error = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    setTimeout(() => {
+      router.push('/');
+    }, 1500);
+  }, [router]);
+
+  return (
+    <div className={styles.wrapper}>
+      <Head>
+        <title>Error</title>
+      </Head>
+      <Heading text="Error" />
+      <Heading tag="h2" text="Something wrong" />
+    </div>
+  );
+};
 
 export default Error;

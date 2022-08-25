@@ -2,19 +2,19 @@ import Heading from '../../components/Heading';
 import Head from 'next/head';
 import Link from 'next/link';
 
-const Contacts = ({ data }) => {
+const Posts = ({ posts }) => {
   return (
     <>
       <Head>
-        <title>Contacts</title>
+        <title>Posts</title>
       </Head>
-      <Heading text="Contacts list:" />
+      <Heading text="Posts list:" />
       <ul>
-        {data &&
-          data.map(({ id, name, email }) => {
+        {posts &&
+          posts.map(({ id, title }) => {
             return (
               <li key={id}>
-                <Link href={`/contacts/${id}`}>{name}</Link>
+                <Link href={`/posts/${id}`}>{title}</Link>
               </li>
             );
           })}
@@ -24,9 +24,8 @@ const Contacts = ({ data }) => {
 };
 
 export const getStaticProps = async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
   const data = await response.json();
-  // const data = null;
 
   if (!data) {
     return {
@@ -35,8 +34,8 @@ export const getStaticProps = async () => {
   }
 
   return {
-    props: { data }
+    props: { posts: data }
   };
 };
 
-export default Contacts;
+export default Posts;
