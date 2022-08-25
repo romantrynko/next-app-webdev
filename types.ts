@@ -6,6 +6,7 @@ export type addressType = {
 }
 
 export type contactType = {
+  id?: string,
   name: string,
   email: string,
   address: addressType
@@ -17,6 +18,7 @@ export type postType = {
 }
 
 export type socialsType = {
+  map(arg0: ({ id, icon, path }: { id: any; icon: any; path: any }) => JSX.Element): import("react").ReactNode
   id: number,
   icon: string,
   path: string

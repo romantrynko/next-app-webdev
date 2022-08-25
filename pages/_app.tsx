@@ -3,8 +3,9 @@ import '../styles/globals.scss';
 import Image from 'next/image';
 import youtubeImg from '../public/logo.png';
 import Head from 'next/head';
+import { AppProps } from 'next/app';
 
-const MyApp = ({ Component, pageProps }) => (
+const MyApp = ({ Component, pageProps }: AppProps) => (
   <Layout>
     <Head>
       <link
