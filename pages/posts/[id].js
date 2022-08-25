@@ -1,16 +1,30 @@
 import Head from 'next/head';
-import ContactInfo from '../../components/ContactInfo';
+import PostInfo from '../../components/PostInfo';
 
-const Post = ({ posts }) => (
+const Post = ({ post }) => (
   <>
     <Head>
-      <title>{posts.title}</title>
+      <title>{post.title}</title>
     </Head>
-    <ContactInfo contact={data} />
+    <PostInfo post={post} />
   </>
 );
 
-export const getServerSideProps = async (context) => {
+export const getStaticPaths = async () => {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  const data = await response.json();
+
+  const paths = data.map(({ id }) => ({
+    params: { id: id.toString() }
+  }));
+
+  return {
+    paths,
+    fallback: false
+  };
+};
+
+export const getStaticProps = async (context) => {
   const { id } = context.params;
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${id}`
@@ -24,7 +38,7 @@ export const getServerSideProps = async (context) => {
   }
 
   return {
-    props: { data }
+    props: { post: data }
   };
 };
 

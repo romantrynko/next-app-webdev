@@ -1,5 +1,5 @@
 import Heading from '../components/Heading';
-import Head from "next/head";
+import Head from 'next/head';
 import styles from '../styles/404.module.scss';
 
 import { useEffect } from 'react';
@@ -19,8 +19,10 @@ const Error = () => {
       <Head>
         <title>Error</title>
       </Head>
-      <Heading text="Error" />
-      <Heading tag="h2" text="Something wrong" />
+      <div>
+        <Heading text="Error" />
+        <Heading tag="h2" text="Something wrong" />
+      </div>
     </div>
   );
 };

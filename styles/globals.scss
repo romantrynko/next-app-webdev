@@ -55,3 +55,13 @@ a {
   color: #fff;
   text-decoration: none;
 }
+
+.image {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: -1;
+  opacity: 0.65;
+}
