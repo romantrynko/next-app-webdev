@@ -7,7 +7,7 @@ import { FC } from 'react';
 import { socialsType } from '../types';
 
 type socialsTypeProps = {
-  socials: socialsType
+  socials: socialsType[]
 }
 
 const Home: FC<socialsTypeProps> = ({ socials }) => (
